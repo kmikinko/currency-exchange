@@ -37,9 +37,7 @@ class CurrencyConverter extends Component {
     
     // przelicz na zlotowki
     
-    countPln = (this.state.euro) => {
-        this.state.euro * 4.30
-}
+  
     
     render() {
         
@@ -61,7 +59,7 @@ class CurrencyConverter extends Component {
                             <input type='text' name='euro' onChange={this.handleChange}>
                             </input>
                         </label>
-                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
+                        <button type='submit' name='calculate' onClick={this.handleTransaction }> Calculate</button>
                         <label>PLN
                             <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange} readOnly>
                             </input>
