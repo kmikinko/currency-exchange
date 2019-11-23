@@ -21,19 +21,25 @@ class CurrencyConverter extends Component {
     
     /* dodanie listy */
     
-    addTransaction = (transaction) =>{
-        let newTransactionList = [...this.state.transactionList, transaction];
-        this.setState({
+    addTransaction = ( transaction ) => {
+        let newTransactionList = [ ...this.state.transactionList, transaction ];
+        this.setState( {
             transactionList: newTransactionList
-        })
+        } )
     }
     
-    handleTransaction = (e) => {
+    handleTransaction = ( e ) => {
         e.preventDefault();
-        if (typeof this.addTransaction ==='function'){
+        if ( typeof this.addTransaction === 'function' ) {
             this.addTransaction(); // cos tu przekazuje?
         }
     }
+    
+    // przelicz na zlotowki
+    
+    countPln = (this.state.euro) => {
+        this.state.euro * 4.30
+}
     
     render() {
         
@@ -43,35 +49,63 @@ class CurrencyConverter extends Component {
             
             <>
                 <section>
-                <form onSubmit={this.handleSubmit}>
-                    <div>EURO RATE: 4.30 PLN</div>
-                    <h1>ADD TRANSACTION</h1>
-                    <label>Transaction name
-                        <input type='text' name='transactionName' value={this.state.transactionName}
-                               onChange={this.handleChange}>
-                        </input>
-                    </label>
-                    <label>EUR
-                        <input type='text' name='euro' onChange={this.handleChange}>
-                        </input>
-                    </label>
-                    <button type='submit' name='calculate'> Calculate</button>
-                    <label>PLN
-                        <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange}>
-                        </input>
-                    </label>
-                </form>
+                    <form onSubmit={this.handleSubmit}>
+                        <div>EURO RATE: 4.30 PLN</div>
+                        <h1>ADD TRANSACTION</h1>
+                        <label>Transaction name
+                            <input type='text' name='transactionName' value={this.state.transactionName}
+                                   onChange={this.handleChange}>
+                            </input>
+                        </label>
+                        <label>EUR
+                            <input type='text' name='euro' onChange={this.handleChange}>
+                            </input>
+                        </label>
+                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
+                        <label>PLN
+                            <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange} readOnly>
+                            </input>
+                        </label>
+                    </form>
                 </section>
                 
-                 {/*lista wszystkich transakcji */}
+                {/*lista wszystkich transakcji */}
                 
                 <section>
-                    <ul>
-                        <span>{this.state.transactionName}</span>
-                        <li>Amount in Euro:<span>{this.state.euro}</span>
-                            Amount in PLN: <span> {this.state.pln}</span>
-                        </li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <h3>{this.state.transactionName}</h3>
+                            <li>Amount in Euro:<span>{this.state.euro}</span>
+                                Amount in PLN: <span> {this.state.pln}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+                {/*suma wszystkich transakcji*/}
+                
+                <section>
+                    <div>
+                        <ul>
+                            <h3>Total sum of all transactions</h3>
+                            <li>Amount in Euro: <span></span>
+                                Amount in PLN:<span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+                {/*najwieksza transakcja*/}
+                
+                <section>
+                    <div>
+                        <ul>
+                            <h3>The biggest transaction</h3>
+                            <li>Amount in Euro: <span></span>
+                                Amount in PLN:<span></span>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
             </>
         )
@@ -79,31 +113,31 @@ class CurrencyConverter extends Component {
 }
 
 // class AllTransactions extends Component {
-    
-    // addTransaction = (transaction) =>{
-    //     let newTransactionList = [...this.state.transactionList, transaction]; /* podpinasz do guzika? */
-    //     this.setState({
-    //         transactionList: newTransactionList
-    //     })
-    // }
-    
-    // handleCalculate = (e) => {
-    //     e.preventDefault();
-    //     const {calculate} = this.props;
-    //     if (typeof calculate === 'function'){
-    //         calculate()
-    //     }
-    // }
-    
-    // render( ) {
-    //
-    //     return <section>
-    //     <ul>
-    //         <li></li>
-    //     </ul>
-    //     </section>
-    //
-    // }
+
+// addTransaction = (transaction) =>{
+//     let newTransactionList = [...this.state.transactionList, transaction]; /* podpinasz do guzika? */
+//     this.setState({
+//         transactionList: newTransactionList
+//     })
+// }
+
+// handleCalculate = (e) => {
+//     e.preventDefault();
+//     const {calculate} = this.props;
+//     if (typeof calculate === 'function'){
+//         calculate()
+//     }
+// }
+
+// render( ) {
+//
+//     return <section>
+//     <ul>
+//         <li></li>
+//     </ul>
+//     </section>
+//
+// }
 // }
 
 // class SingleTransaction extends Component{ //jesli to bedzie w rodzicu to przekazac chyba mozesz {}
@@ -131,8 +165,6 @@ class CurrencyConverter extends Component {
 // }
 //
 // }
-
-
 
 
 class App extends Component {
