@@ -1,28 +1,60 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-let valuesToCalculate = [
-    {from: "EUR", to: "USD", rate: 1.1226, value: 200},
-    {from: "PLN", to: "USD", rate: 3.88, value: 200},
-    {from: "PLN", to: "EUR", rate: 4.33, value: 200},
-];
-
 class CurrencyConverter extends Component {
+    state = {
+        euro: '',
+        pln: '',
+        transactionName: '',
+        transactionList: []
+    }
+    
+    handleChange = ( e ) => {
+        this.setState( {
+            [e.target.name]: e.target.value
+        } )
+    }
+    
+    handleSubmit = e => {
+        e.preventDefault();
+    };
+    
     render() {
+    
+        /* tabelka z historia transakcji */
+    
+        addTransaction = (transaction) =>{
+            let newTransactionList = [...this.state.transactionList, transaction];
+            this.setState({
+                transactionList: newTransactionList
+            })
+        }
+    
         return (
+            /* formularz z walutami */
             <section>
-                <div>EURO RATE: 4.30 PLN</div>
-                <form>
-                    <label>EUR
-                        <input type='text' name='euro'></input>
+                <form onSubmit={this.handleSubmit}>
+                    <div>EURO RATE: 4.30 PLN</div>
+                    <label>Transaction name
+                        <input type='text' name='transactionName' value={this.state.transactionName}
+                               onChange={this.handleChange}></input>
                     </label>
-                    <span>=</span>
+                    <label>EUR
+                        <input type='text' name='euro' onChange={this.handleChange}></input>
+                    </label>
+                    <button type='submit' name='calculate'> Calculate</button>
                     <label>PLN
-                        <input type='text' name='pln'></input>
+                        <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange}></input>
                     </label>
                 </form>
             </section>
+        
+        /* tabelka z transakcjami */
+        
+        
+        
         )
+        
     }
 }
 
