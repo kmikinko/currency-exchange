@@ -24,22 +24,21 @@ class CurrencyConverter extends Component {
     addTransaction = ( transaction ) => {
         let newTransactionList = [ ...this.state.transactionList, transaction ];
         this.setState( {
-            transactionList: newTransactionList
+            transactionList: newTransactionList,
+            pln: this.state.euro * 4.30
         } )
     }
     
     handleTransaction = ( e ) => {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
-            this.addTransaction(); // cos tu przekazuje?
+            this.addTransaction();
         }
     }
     
-    // przelicz na zlotowki
-    
-  
-    
-    render() {
+
+ 
+    render(){
         
         return (
             
@@ -52,14 +51,14 @@ class CurrencyConverter extends Component {
                         <h1>ADD TRANSACTION</h1>
                         <label>Transaction name
                             <input type='text' name='transactionName' value={this.state.transactionName}
-                                   onChange={this.handleChange}>
+                                   onChange={this.handleChange} placeholder='Transaction name'>
                             </input>
                         </label>
                         <label>EUR
-                            <input type='text' name='euro' onChange={this.handleChange}>
+                            <input type='text' name='euro' onChange={this.handleChange} placeholder='Numbers only'>
                             </input>
                         </label>
-                        <button type='submit' name='calculate' onClick={this.handleTransaction }> Calculate</button>
+                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
                         <label>PLN
                             <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange} readOnly>
                             </input>
@@ -72,10 +71,11 @@ class CurrencyConverter extends Component {
                 <section>
                     <div>
                         <ul>
-                            <h3>{this.state.transactionName}</h3>
-                            <li>Amount in Euro:<span>{this.state.euro}</span>
-                                Amount in PLN: <span> {this.state.pln}</span>
-                            </li>
+                            {/*<h3>{this.state.transactionName}</h3>*/}
+                            {/*<li>Amount in Euro:<span>{this.state.euro}</span>*/}
+                            {/*    Amount in PLN: <span> {this.state.pln}</span>*/}
+                            {/*</li>*/}
+                            <li></li>
                         </ul>
                     </div>
                 </section>
@@ -110,67 +110,11 @@ class CurrencyConverter extends Component {
     }
 }
 
-// class AllTransactions extends Component {
-
-// addTransaction = (transaction) =>{
-//     let newTransactionList = [...this.state.transactionList, transaction]; /* podpinasz do guzika? */
-//     this.setState({
-//         transactionList: newTransactionList
-//     })
-// }
-
-// handleCalculate = (e) => {
-//     e.preventDefault();
-//     const {calculate} = this.props;
-//     if (typeof calculate === 'function'){
-//         calculate()
-//     }
-// }
-
-// render( ) {
-//
-//     return <section>
-//     <ul>
-//         <li></li>
-//     </ul>
-//     </section>
-//
-// }
-// }
-
-// class SingleTransaction extends Component{ //jesli to bedzie w rodzicu to przekazac chyba mozesz {}
-//
-//    handleTransaction = (e) =>{
-//        e.preventDefault();
-//        const {addTransaction, value} = this.props /*co przyjmuje jako 2gie?? jak wpisac euro i pln? */
-//        if(typeof addTransaction === 'function'){
-//            addTransaction(value);
-//        }
-//    }
-//
-//     render(props){
-//         return <tr>
-//             <td>{this.props.state.euro}</td>
-//             <td>{this.state.pln}</td>
-//         </tr>
-//     }
-// }
-// class SingleTransaction extends Component {
-//     const
-//
-// render (){
-//     return null;
-// }
-//
-// }
-
 
 class App extends Component {
     render() {
         return <>
             <CurrencyConverter/>
-            {/*<AllTransactions/>*/}
-            {/*<SingleTransaction/>*/}
         </>
     }
 }
