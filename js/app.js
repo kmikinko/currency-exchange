@@ -28,7 +28,7 @@ class CurrencyConverter extends Component {
             pln: this.state.euro * 4.30
         } )
     }
-    
+
     handleTransaction = ( e ) => {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
@@ -111,7 +111,11 @@ class CurrencyConverter extends Component {
 }
 
 
+
+
+
 class App extends Component {
+    
     render() {
         return <>
             <CurrencyConverter/>
