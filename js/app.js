@@ -15,7 +15,7 @@ class CurrencyConverter extends Component {
     handleSubmit = e => {
         e.preventDefault();
     };
-    /* dodanie listy */
+    /* adding the list */
     addTransaction = ( transaction) => {
         transaction.pln = this.state.euro * 4.30
         let newTransactionList = [ ...this.state.transactionList, transaction];
@@ -37,7 +37,7 @@ class CurrencyConverter extends Component {
     }
     render(){
         return (
-            /* formularz z walutami */
+            /* currency form */
             <>
                 <section>
                     <form onSubmit={this.handleSubmit}>
@@ -59,7 +59,7 @@ class CurrencyConverter extends Component {
                         </label>
                     </form>
                 </section>
-                {/*lista wszystkich transakcji */}
+                {/* list of all transactions */}
                 <section>
                     <div>
                         <ul>
@@ -67,7 +67,7 @@ class CurrencyConverter extends Component {
                         </ul>
                     </div>
                 </section>
-                {/*suma wszystkich transakcji*/}
+                {/*sum of all transactions*/}
                 <section>
                     <div>
                         <ul>
@@ -78,7 +78,7 @@ class CurrencyConverter extends Component {
                         </ul>
                     </div>
                 </section>
-                {/*najwieksza transakcja*/}
+                {/*biggest transaction*/}
                 <section>
                     <div>
                         <ul>
