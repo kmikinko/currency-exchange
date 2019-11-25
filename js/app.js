@@ -24,10 +24,10 @@ class CurrencyConverter extends Component {
         
     }
     componentDidMount() {
-        fetch("http://api.nbp.pl/").then(r => r.json())
-            .then(ip => {
+        fetch("https://api.exchangerate-api.com/v4/latest/USD").then(r => r.json())
+            .then(data => {
                 this.setState({
-                    data: ip
+                    data: data
                 });
             });
     }
