@@ -5,7 +5,7 @@ var Html = require('html-webpack-plugin');
 module.exports = {
   entry: [
     "whatwg-fetch",
-    "",
+    "./js/app.js",
   ],
   output: {
     filename: "js/out.js",
@@ -71,7 +71,7 @@ module.exports = {
   plugins: [
     new Html({
       filename: 'index.html',
-      template: './src/index.html',
+      template: './index.html',
     })
   ]
 }

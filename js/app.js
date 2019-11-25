@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
+import './../style/app.scss';
+
+
 class CurrencyConverter extends Component {
     state = {
         transactionName: '',
@@ -8,29 +11,41 @@ class CurrencyConverter extends Component {
         transactionList: []
     }
     handleChange = ( e ) => {
+        const name = e.target.name
         this.setState( {
-            [e.target.name]: e.target.value
-        } )
+            [name]: e.target.value
+        },()=>{
+            if (name ==='euro' ){
+                this.setState({
+                    pln: this.state.euro * 4.30
+                })
+            }
+        } );
+        
+       
     }
     handleSubmit = e => {
         e.preventDefault();
     };
     /* adding the list */
     addTransaction = ( transaction) => {
-        transaction.pln = this.state.euro * 4.30
+        
         let newTransactionList = [ ...this.state.transactionList, transaction];
-        console.log(newTransactionList);
-        console.log(this.state.transactionList);
         this.setState( {
             transactionList: newTransactionList,
-            pln: this.state.euro * 4.30
         });
     }
     handleTransaction = ( e ) => {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
             console.log(this.state.transactionName)
-            let obj = JSON.parse(`{ "name": "${this.state.transactionName}", "euro": "${this.state.euro}", "pln" : ""}`);
+            //let obj = JSON.parse(`{ "name": "${this.state.transactionName}", "euro": "${this.state.euro}", "pln" : ""}`);
+            const obj = { //objekt ktory dodawawny jest do state. to jest lista transakcji. kolejny element listy transakcji
+                name: this.state.transactionName,
+                euro: this.state.euro,
+                pln: this.state.euro * 4.30
+            }
+            
             console.log(obj);
             this.addTransaction(obj);
         }
