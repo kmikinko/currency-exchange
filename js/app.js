@@ -22,8 +22,16 @@ class CurrencyConverter extends Component {
             }
         } );
         
-       
     }
+    componentDidMount() {
+        fetch("http://api.nbp.pl/").then(r => r.json())
+            .then(ip => {
+                this.setState({
+                    data: ip
+                });
+            });
+    }
+    
     handleSubmit = e => {
         e.preventDefault();
     };
@@ -39,16 +47,14 @@ class CurrencyConverter extends Component {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
             console.log(this.state.transactionName)
-            //let obj = JSON.parse(`{ "name": "${this.state.transactionName}", "euro": "${this.state.euro}", "pln" : ""}`);
             const obj = { //objekt ktory dodawawny jest do state. to jest lista transakcji. kolejny element listy transakcji
                 name: this.state.transactionName,
                 euro: this.state.euro,
                 pln: this.state.euro * 4.30
             }
-            
-            console.log(obj);
             this.addTransaction(obj);
         }
+        
     }
     render(){
         return (
@@ -67,7 +73,7 @@ class CurrencyConverter extends Component {
                             <input type='text' name='euro' value={this.state.euro} onChange={this.handleChange} placeholder='Numbers only'>
                             </input>
                         </label>
-                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
+                        <button type='submit' name='calculate' onClick={this.handleTransaction} > Calculate</button>
                         <label>PLN
                             <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange} readOnly>
                             </input>
@@ -108,6 +114,9 @@ class CurrencyConverter extends Component {
         )
     }
 }
+
+
+
 class App extends Component {
     render() {
         return <>
