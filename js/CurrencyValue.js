@@ -31,7 +31,7 @@ class CurrencyValue extends Component {
       
         return <>
             <select onChange={this.handleChange}>
-                <option value={this.state.fromCurrency}>EUR
+                <option value={this.state.fromCurrency} >EUR
                 </option>
                 <option value={this.state.toCurrency}>PLN
                 </option>

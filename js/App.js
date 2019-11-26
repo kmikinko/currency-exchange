@@ -68,58 +68,77 @@ class CurrencyConverter extends Component {
                 <section>
                 
                 </section>
-                /* currency form */
-                <section>
-                    <form onSubmit={this.handleSubmit}>
-                        <div>EURO RATE: 4.30 PLN</div>
-                        <h1>NEW TRANSACTION</h1>
-                        <label>Transaction name
-                            <input type='text' name='transactionName' value={this.state.transactionName}
-                                   onChange={this.handleChange} placeholder='Transaction name'>
-                            </input>
-                        </label>
-                        <label>From:
-                            <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
-                            <input type='text' name='euro' value={this.state.euro} onChange={this.handleChange}
-                                   placeholder='Numbers only'>
-                            </input>
-                        </label>
-                        <label>To:
-                            <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
-                            <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange}
-                                   readOnly>
-                            </input>
-                        </label>
-                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
-                    </form>
+                {/*currency form */}
+                <section className={'main_app'}>
+                    <div>
+                        <h1 className={'container'}>CURRENCY CONVERTER</h1>
+                        <form onSubmit={this.handleSubmit} className={'container'}>
+                            {/*<div>EURO RATE: 4.30 PLN</div>*/}
+                            <div className={'exchange'}>
+                                <div>
+                                    <label>Transaction name
+                                        <input type='text' name='transactionName' value={this.state.transactionName}
+                                               onChange={this.handleChange} placeholder='Transaction name'
+                                               className={'input_fields'}>
+                                        </input>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label>From:
+                                        <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
+                                        <input type='text' name='euro' value={this.state.euro}
+                                               onChange={this.handleChange}
+                                               placeholder='Numbers only' className={'input_fields'}>
+                                        </input>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label>To:
+                                        <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
+                                        <input type='text' name='pln' value={this.state.pln}
+                                               onChange={this.handleChange} className={'input_fields'}
+                                               readOnly>
+                                        </input>
+                                    </label>
+                                </div>
+                                
+                                <button type='submit' name='calculate' onClick={this.handleTransaction}
+                                        className={'btn'}> Calculate
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </section>
                 {/* list of all transactions */}
-                <section>
-                    <div>
-                        <ul>
+                <section className={'main_app'}>
+                    <div className={'container'}>
+                        <ul className={'transaction_list'}>
                             {this.state.transactionList.map( ( element, index ) => <li key={index}>Transaction
-                                                                                                   PLN: {element.pln}</li> )}
+                                                                                                   PLN: {element.pln} </li> )}
+                       <li>THIS IS A TRANSACTION LIST</li>
                         </ul>
                     </div>
                 </section>
                 {/*sum of all transactions*/}
-                <section>
-                    <div>
-                        <ul>
+                <section className={'main_app'}>
+                    <div className={'container '}>
+                        <ul className={'transaction_list transactions'}>
                             <h3>Total sum of all transactions</h3>
-                            <li>Amount in Euro: <span></span>
-                                Amount in PLN:<span></span>
+                            <li>Amount in Euro: <span>'100'</span>
+                                Amount in PLN:<span>'100'</span>
                             </li>
                         </ul>
                     </div>
                 </section>
                 {/*biggest transaction*/}
-                <section>
-                    <div>
-                        <ul>
+                <section className={'main_app'}>
+                    <div className={'container'}>
+                        <ul className={'transaction_list transactions'}>
                             <h3>The biggest transaction</h3>
-                            <li>Amount in Euro: <span></span>
-                                Amount in PLN:<span></span>
+                            <li>Amount in Euro: <span>'100'</span>
+                                Amount in PLN:<span>'100'</span>
                             </li>
                         </ul>
                     </div>
