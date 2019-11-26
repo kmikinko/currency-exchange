@@ -13,13 +13,13 @@ class GetApi extends Component{
     componentDidMount() {
         fetch("https://api.exchangerate-api.com/v4/latest/EUR" ).then(r => r.json())
             .then(data => {
-                this.setState({eur: data.rates.PLN});
-                this.props.setPLN(data.rates.PLN);
+                this.setState({pln: data.rates.EUR});
+                this.props.setEuro(data.rates.EUR);
             })
         fetch("https://api.exchangerate-api.com/v4/latest/PLN").then(r => r.json())
             .then(data => {
-                this.setState({pln: data.rates.EUR});
-                this.props.setPLN(data.rates.EUR);
+                this.setState({eur: data.rates.PLN});
+                this.props.setPln(data.rates.PLN);
             })
       }
     
