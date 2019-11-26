@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import './../style/app.scss';
+import GetApi from "./GetApi";
 
 
 class CurrencyConverter extends Component {
@@ -22,16 +23,7 @@ class CurrencyConverter extends Component {
             }
         } );
         
-    }
-    componentDidMount() {
-        fetch("https://api.exchangerate-api.com/v4/latest/USD").then(r => r.json())
-            .then(data => {
-                this.setState({
-                    data: data
-                });
-            });
-    }
-    
+      
     handleSubmit = e => {
         e.preventDefault();
     };
@@ -58,8 +50,12 @@ class CurrencyConverter extends Component {
     }
     render(){
         return (
-            /* currency form */
+           /* fetch test section */
             <>
+                <section>
+                    <GetApi/>
+                </section>
+                /* currency form */
                 <section>
                     <form onSubmit={this.handleSubmit}>
                         <div>EURO RATE: 4.30 PLN</div>
