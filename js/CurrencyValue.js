@@ -1,7 +1,8 @@
 import React, {Component} from "react";
+import getCurrencyRates from "./utils/CurrencyRates";
 
 
-class GetApi extends Component {
+class CurrencyValue extends Component {
     constructor( props ) {
         super( props );
         this.state = {
@@ -11,26 +12,25 @@ class GetApi extends Component {
             fromValue: '',
             fromCurrency: '',
             toValue: '',
-            toCurrency:''
+            toCurrency: ''
         }
     }
     
     componentDidMount() {
-       const currency = data.rates.currency;
-        fetch( `https://api.exchangerate-api.com/v4/latest/${currency}` ).then( r => r.json() )
-            .then( data => {
-                this.setState( {fromCurrency: data.rates.currency});
-            } )
-        fetch( `https://api.exchangerate-api.com/v4/latest/${currency}` ).then( r => r.json() )
-            .then( data => {
-                this.setState( {toCurrency: data.rates.currency});
-            } )
+        this.getCurrencyValue( 'Euro' )
     }
     
+    getCurrencyValue = ( currency ) => getCurrencyRates( currency )
+        .then( response => {
+            this.setState( {...this.state, fromCurrency: response.base} );
+        } )
+    
+    handleChange = ( val ) => this.getCurrencyValue( val.target.text ); //check
     
     render() {
+      
         return <>
-            <select>
+            <select onChange={this.handleChange}>
                 <option value={this.state.fromCurrency}>EUR
                 </option>
                 <option value={this.state.toCurrency}>PLN
@@ -40,5 +40,5 @@ class GetApi extends Component {
     }
 }
 
-export default GetApi;
+export default CurrencyValue;
 

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import './../style/app.scss';
-import GetApi from "./GetApi";
+import CurrencyValue from "./CurrencyValue";
 
 
 class CurrencyConverter extends Component {
@@ -78,19 +78,19 @@ class CurrencyConverter extends Component {
                                    onChange={this.handleChange} placeholder='Transaction name'>
                             </input>
                         </label>
-                        <label>
-                            <GetApi setPln={this.setPln} setEuro={this.setEuro}/>
+                        <label>From:
+                            <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
                             <input type='text' name='euro' value={this.state.euro} onChange={this.handleChange}
                                    placeholder='Numbers only'>
                             </input>
                         </label>
-                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
-                        <label>
-                            <GetApi setPln={this.setPln} setEuro={this.setEuro}/>
+                        <label>To:
+                            <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
                             <input type='text' name='pln' value={this.state.pln} onChange={this.handleChange}
                                    readOnly>
                             </input>
                         </label>
+                        <button type='submit' name='calculate' onClick={this.handleTransaction}> Calculate</button>
                     </form>
                 </section>
                 {/* list of all transactions */}
