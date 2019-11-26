@@ -16,37 +16,24 @@ class GetApi extends Component {
     }
     
     componentDidMount() {
-        fetch( "https://api.exchangerate-api.com/v4/latest/EUR" ).then( r => r.json() )
+       const currency = data.rates.currency;
+        fetch( `https://api.exchangerate-api.com/v4/latest/${currency}` ).then( r => r.json() )
             .then( data => {
-                this.setState( {eur: data.rates.EUR} );
-                this.props.setEuro( data.rates.EUR );
+                this.setState( {fromCurrency: data.rates.currency});
             } )
-        fetch( "https://api.exchangerate-api.com/v4/latest/PLN" ).then( r => r.json() )
+        fetch( `https://api.exchangerate-api.com/v4/latest/${currency}` ).then( r => r.json() )
             .then( data => {
-                this.setState( {pln: data.rates.PLN} );
-                this.props.setPln( data.rates.PLN );
+                this.setState( {toCurrency: data.rates.currency});
             } )
-    
-        // fetch( "https://api.exchangerate-api.com/v4/latest/EUR" ).then( r => r.json() )
-        //     .then( data => {
-        //         this.setState( {eur: data.rates.EUR} );
-        //         this.props.setEuro( data.rates.EUR );
-        //     } )
-        // fetch( "https://api.exchangerate-api.com/v4/latest/PLN" ).then( r => r.json() )
-        //     .then( data => {
-        //         this.setState( {pln: data.rates.PLN} );
-        //         this.props.setPln( data.rates.PLN );
-        //     } )
     }
     
     
     render() {
-        console.log(this.state.pln);
         return <>
             <select>
-                <option value=''>EUR
+                <option value={this.state.fromCurrency}>EUR
                 </option>
-                <option value=''>PLN
+                <option value={this.state.toCurrency}>PLN
                 </option>
             </select>
         </>
