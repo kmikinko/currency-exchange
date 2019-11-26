@@ -5,7 +5,7 @@ var Html = require('html-webpack-plugin');
 module.exports = {
   entry: [
     "whatwg-fetch",
-    "./js/app.js",
+    "./js/App.js",
   ],
   output: {
     filename: "js/out.js",

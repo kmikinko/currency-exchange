@@ -1,35 +1,35 @@
 import React, {Component} from "react";
 
 class GetApi extends Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            currencies: []
+            currencies: [],
+            eur: 0,
+            pln: 0
         }
     }
     
     componentDidMount() {
-        fetch("https://api.exchangerate-api.com/v4/latest/EUR").then(r => r.json())
+        fetch("https://api.exchangerate-api.com/v4/latest/EUR" ).then(r => r.json())
             .then(data => {
-                // let currencies = data.results.map(currency => {
-                //     return <div>Euro rate</div>
-                // })
-                this.setState({currencies: data.results});
+                this.setState({eur: data.rates.PLN});
+                this.props.setPLN(data.rates.PLN);
             })
         fetch("https://api.exchangerate-api.com/v4/latest/PLN").then(r => r.json())
             .then(data => {
-                // let currencies = data.results.map(currency => {
-                //     return <div>Euro rate</div>
-                // })
-                this.setState({currencies: data.results});
+                this.setState({pln: data.rates.EUR});
+                this.props.setPLN(data.rates.EUR);
             })
-        
-    }
+      }
+    
     
     
     render() {
+       
         return <>
-
+        <div>xxxx{this.state.eur}</div>
+            <div>{this.state.pln}</div>
         </>
     }
 }

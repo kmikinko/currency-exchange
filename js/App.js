@@ -7,8 +7,8 @@ import GetApi from "./GetApi";
 class CurrencyConverter extends Component {
     state = {
         transactionName: '',
-        euro: '',
-        pln: '',
+        eur: 0,
+        pln: 0,
         transactionList: []
     }
     handleChange = ( e ) => {
@@ -22,6 +22,18 @@ class CurrencyConverter extends Component {
                 } )
             }
         } );
+    }
+    
+    setEuro = eur =>{
+        this.setState({
+            eur: eur
+        })
+    }
+    
+    setPln = pln => {
+        this.setState({
+            pln: pln
+        })
     }
         
         handleSubmit = e => {
@@ -54,7 +66,7 @@ class CurrencyConverter extends Component {
                 /* fetch test section */
                 <>
                     <section>
-                        <GetApi/>
+                        <GetApi setPln={this.setPln} setEuro={this.setEuro}/>
                     </section>
                     /* currency form */
                     <section>
@@ -84,11 +96,7 @@ class CurrencyConverter extends Component {
                         <div>
                             <ul>
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>Transaction
-                                                                                                       Name: {element.name} Amount
-                                                                                                       in
-                                                                                                       Euro: {element.euro} Amount
-                                                                                                       in
-                                                                                                       PLN: {element.pln}</li> )}
+                                                                                                     PLN: {element.pln}</li> )}
                             </ul>
                         </div>
                     </section>
