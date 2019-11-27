@@ -13,12 +13,12 @@ class CurrencyRates extends Component {
         
         return <>
             <label>To:
-                {/*<CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>*/}
                 <select onChange={this.handleChange}>
-                    <option>EUR
-                    </option>
                     <option>PLN
                     </option>
+                    <option>EUR
+                    </option>
+                    
                 </select>
             </label>
         </>

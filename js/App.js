@@ -16,29 +16,29 @@ class CurrencyConverter extends Component {
         toCurrency: ''
     }
     
-    setToCurrency =(currency) =>{
-        this.setState({
+    setToCurrency = ( currency ) => {
+        this.setState( {
             toCurrency: currency
-        })
-}
+        } )
+    }
     
     handleChange = ( e ) => {
         const name = e.target.name
         this.setState( {
             [name]: e.target.value
-        });
+        } );
     }
     
     handleCurrencySelection = e => {
-        this.setState({
+        this.setState( {
             fromCurrency: e.target.value,
-        })
+        } )
     }
     
-    setRates = rates =>{
-        this.setState({
-        rates: rates
-        })
+    setRates = rates => {
+        this.setState( {
+            rates: rates
+        } )
     }
     
     setEuro = eur => {
@@ -68,7 +68,7 @@ class CurrencyConverter extends Component {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
             console.log( this.state.transactionName )
-            const obj = { //objekt ktory dodawawny jest do state. to jest lista transakcji. kolejny element listy transakcji
+            const obj = {
                 name: this.state.transactionName,
                 euro: this.state.euro,
                 pln: this.state.euro * 4.30
@@ -78,23 +78,19 @@ class CurrencyConverter extends Component {
         
     }
     
-    calculateToValue = ()=>{
+    calculateToValue = () => {
         return this.state.fromValue * this.state.rates[this.state.toCurrency]
+        
     }
     
     render() {
         return (
-            /* fetch test section */
             <>
-                <section>
-                
-                </section>
                 {/*currency form */}
                 <section className={'main_app'}>
                     <div>
                         <h1 className={'container'}>CURRENCY CONVERTER</h1>
                         <form onSubmit={this.handleSubmit} className={'container'}>
-                            {/*<div>EURO RATE: 4.30 PLN</div>*/}
                             <div className={'exchange'}>
                                 <div>
                                     <label>Transaction name
@@ -116,7 +112,7 @@ class CurrencyConverter extends Component {
                                 </div>
                                 
                                 <div>
-                                    <CurrencyRates setToCurrency={this.setToCurrency} />
+                                    <CurrencyRates setToCurrency={this.setToCurrency}/>
                                     <input type='text' name='toValue' value={this.calculateToValue()}
                                            placeholder='Numbers only' className={'input_fields'} readOnly>
                                     </input>
@@ -133,19 +129,19 @@ class CurrencyConverter extends Component {
                 <section className={'main_app'}>
                     <div className={'container'}>
                         <ul className={'transaction_list'}>
-                            {this.state.transactionList.map( ( element, index ) => <li key={index}>Transaction
-                                                                                                   PLN: {element.pln} </li> )}
-                       <li>THIS IS A TRANSACTION LIST</li>
+                            <li>THIS IS A TRANSACTION LIST</li>
+                            {this.state.transactionList.map( ( element, index ) => <li key={index}>Transaction Name: {element.transactionName} Transaction
+                                                                                                   PLN: {element.pln} Transaction EUR:{element.eur}</li> )}
                         </ul>
                     </div>
                 </section>
                 {/*sum of all transactions*/}
                 <section className={'main_app'}>
                     <div className={'container '}>
-                        <ul className={'transaction_list transactions'}>
+                        <ul className={'transaction_list transactions'} onClick={this.handleChange}>
                             <h3>Total sum of all transactions</h3>
-                            <li>Amount in Euro: <span>'100'</span>
-                                Amount in PLN:<span>'100'</span>
+                            <li>Amount in Euro: <span>{this.state.eur}</span>
+                                Amount in PLN:<span>{this.state.pln}</span>
                             </li>
                         </ul>
                     </div>

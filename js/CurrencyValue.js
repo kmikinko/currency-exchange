@@ -25,12 +25,9 @@ class CurrencyValue extends Component {
             this.setState( {...this.state, fromCurrency: response.base} );
         } )
     
-    handleChange = ( val ) => this.getCurrencyValue( val.target.value ); //check
-   
-    
+    handleChange = ( val ) => this.getCurrencyValue( val.target.value );
     
     render() {
-        // const {'Euro'} = this.props.euro;
         return <>
             <select onChange={this.handleChange}>
                 <option>EUR
