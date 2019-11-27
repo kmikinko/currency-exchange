@@ -100,8 +100,8 @@ class CurrencyConverter extends Component {
                     {/*currency form */}
                     <section className={'main_app'}>
                         <div>
-                            <h1 className={'container'}>CURRENCY CONVERTER</h1>
-                            <form onSubmit={this.handleSubmit} className={'container'}>
+                            <h1>CURRENCY CONVERTER</h1>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className={'exchange'}>
                                     <div>
                                         <label>Transaction name
@@ -114,59 +114,63 @@ class CurrencyConverter extends Component {
                                     
                                     <div>
                                         <label>From:
-                                            <CurrencyValue setRates={this.setRates}/>
                                             <input type='text' name='fromValue' value={this.state.fromValue}
                                                    onChange={this.handleChange}
                                                    placeholder='Numbers only' className={'input_fields'}>
                                             </input>
+                                            <CurrencyValue setRates={this.setRates}/>
                                         </label>
                                     </div>
                                     
                                     <div>
-                                        <CurrencyRates setToCurrency={this.setToCurrency}/>
+                                        
                                         <input type='text' name='toValue' value={this.calculateToValue()}
                                                placeholder='Numbers only' className={'input_fields'} readOnly>
                                         </input>
+                                        <CurrencyRates setToCurrency={this.setToCurrency}/>
                                     </div>
                                     
                                     <button type='submit' name='calculate' onClick={this.handleTransaction}
-                                            className={'btn'}> Calculate
+                                            className={'btn'}> Add transaction
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </section>
+                    
                     {/* list of all transactions */}
                     <section className={'main_app'}>
                         <div>
                             <h3 className={'all_transactions'}>ALL TRANSACTIONS</h3>
                             <ul className={'transaction_list'}>
-                                <li>test</li>
-                                <li>test</li>
-                                
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
-                                    <span> Transaction Name:<span> {this.state.transactionName}</span></span>
-                                    <span> Transaction EUR:<span>{this.state.fromValue}</span></span>
-                                    <span> Transaction PLN: <span>{this.state.toValue}</span></span>
+                                    <div className={'list_element'}>
+                                        Transaction Name:<span> {this.state.transactionName}</span>
+                                        Transaction EUR:<span>{this.state.fromValue}</span>
+                                        Transaction PLN: <span>{this.state.toValue}</span>
+                                        <button className={'btn_remove'}>X</button>
+                                    </div>
                                 </li> )}
                             </ul>
                         </div>
                     </section>
+                    
                     {/*sum of all transactions*/}
+                    
                     <section className={'main_app'}>
-                        <div className={'container '}>
+                        <div className={'hover'}>
                             <ul className={'transaction_list transactions'} onClick={this.handleChange}>
                                 <h3>Total sum of all transactions</h3>
                                 <li>
-                                    <span>Amount in Euro: <span>{this.state.eur}</span> </span>
-                                    <span> Amount in PLN:<span>{this.state.pln}</span></span>
+                                    Amount in Euro: <span>{this.state.eur}</span>
+                                    Amount in PLN:<span>{this.state.pln}</span>
                                 </li>
                             </ul>
                         </div>
                     </section>
                     {/*biggest transaction*/}
                     <section className={'main_app'}>
-                        <div className={'container'}>
+                        <div className={'hover'}>
                             <ul className={'transaction_list transactions'}>
                                 <h3>The biggest transaction</h3>
                                 <li>Amount in Euro: <span>'100'</span>

@@ -8,6 +8,10 @@
   background-color: $transactionsBackground;
   padding-top: 20px;
   padding-bottom: 20px;
+
+  &:hover{
+    background-color: $hoverDiv;
+  }
 }
 
 h3 {
@@ -23,11 +27,5 @@ span {
   color: $headerText;
   margin-left: 10px;
   margin-right: 10px;
-}
-
-// all transactions
-
-.all_transactions{
-  background-color: $transactionsList;
-  padding-top: 20px;
+  font-weight: bold;
 }

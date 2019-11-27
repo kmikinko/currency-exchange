@@ -1,0 +1,21 @@
+
+// all transactions (list)
+
+.all_transactions{
+  background-color: $transactionsBackground;
+  padding-top: 20px;
+}
+
+.list_element{
+  background-color: #f3e5dd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &:hover{
+    background-color: $hoverDiv;
+  }
+}
+
+.btn_remove {
+
+}
