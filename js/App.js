@@ -138,9 +138,12 @@ class CurrencyConverter extends Component {
                     </section>
                     {/* list of all transactions */}
                     <section className={'main_app'}>
-                        <div className={'container'}>
+                        <div>
+                            <h3 className={'all_transactions'}>ALL TRANSACTIONS</h3>
                             <ul className={'transaction_list'}>
-                                <li>THIS IS A TRANSACTION LIST</li>
+                                <li>test</li>
+                                <li>test</li>
+                                
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                     <span> Transaction Name:<span> {this.state.transactionName}</span></span>
                                     <span> Transaction EUR:<span>{this.state.fromValue}</span></span>

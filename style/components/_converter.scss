@@ -36,3 +36,14 @@ option {
   color: white;
   margin-top: 20px;
 }
+
+//dropdown box
+
+select{
+  width: 70px;
+  height: 40px;
+  padding-left: 10px;
+  color: $headerText;
+  font-weight: bold;
+  margin-left: 10px;
+}
