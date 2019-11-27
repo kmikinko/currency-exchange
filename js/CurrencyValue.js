@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import getCurrencyRates from "./utils/CurrencyRates";
+import getCurrencyRates from "./utils/CurrencyApi";
 
 
 class CurrencyValue extends Component {
@@ -9,7 +9,6 @@ class CurrencyValue extends Component {
             currencies: [],
             eur: 0,
             pln: 0,
-            fromValue: '',
             fromCurrency: '',
             toValue: '',
             toCurrency: ''
@@ -22,18 +21,21 @@ class CurrencyValue extends Component {
     
     getCurrencyValue = ( currency ) => getCurrencyRates( currency )
         .then( response => {
+            this.props.setRates(response.rates);
             this.setState( {...this.state, fromCurrency: response.base} );
         } )
     
-    handleChange = ( val ) => this.getCurrencyValue( val.target.text ); //check
+    handleChange = ( val ) => this.getCurrencyValue( val.target.value ); //check
+   
+    
     
     render() {
-      
+        // const {'Euro'} = this.props.euro;
         return <>
             <select onChange={this.handleChange}>
-                <option value={this.state.fromCurrency} >EUR
+                <option>EUR
                 </option>
-                <option value={this.state.toCurrency}>PLN
+                <option>PLN
                 </option>
             </select>
         </>

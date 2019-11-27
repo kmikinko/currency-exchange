@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import './../style/app.scss';
 import CurrencyValue from "./CurrencyValue";
+import CurrencyRates from './components/CurrencyRates';
 
 
 class CurrencyConverter extends Component {
@@ -9,19 +10,35 @@ class CurrencyConverter extends Component {
         transactionName: '',
         eur: 0,
         pln: 0,
-        transactionList: []
+        transactionList: [],
+        rates: [],
+        fromValue: '',
+        toCurrency: ''
     }
+    
+    setToCurrency =(currency) =>{
+        this.setState({
+            toCurrency: currency
+        })
+}
+    
     handleChange = ( e ) => {
         const name = e.target.name
         this.setState( {
             [name]: e.target.value
-        }, () => {
-            if ( name === 'euro' ) {
-                this.setState( {
-                    pln: this.state.euro * 4.30
-                } )
-            }
-        } );
+        });
+    }
+    
+    handleCurrencySelection = e => {
+        this.setState({
+            fromCurrency: e.target.value,
+        })
+    }
+    
+    setRates = rates =>{
+        this.setState({
+        rates: rates
+        })
     }
     
     setEuro = eur => {
@@ -61,6 +78,10 @@ class CurrencyConverter extends Component {
         
     }
     
+    calculateToValue = ()=>{
+        return this.state.fromValue * this.state.rates[this.state.toCurrency]
+    }
+    
     render() {
         return (
             /* fetch test section */
@@ -86,8 +107,8 @@ class CurrencyConverter extends Component {
                                 
                                 <div>
                                     <label>From:
-                                        <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
-                                        <input type='text' name='euro' value={this.state.euro}
+                                        <CurrencyValue setRates={this.setRates}/>
+                                        <input type='text' name='fromValue' value={this.state.fromValue}
                                                onChange={this.handleChange}
                                                placeholder='Numbers only' className={'input_fields'}>
                                         </input>
@@ -95,13 +116,10 @@ class CurrencyConverter extends Component {
                                 </div>
                                 
                                 <div>
-                                    <label>To:
-                                        <CurrencyValue setPln={this.setPln} setEuro={this.setEuro}/>
-                                        <input type='text' name='pln' value={this.state.pln}
-                                               onChange={this.handleChange} className={'input_fields'}
-                                               readOnly>
-                                        </input>
-                                    </label>
+                                    <CurrencyRates setToCurrency={this.setToCurrency} />
+                                    <input type='text' name='toValue' value={this.calculateToValue()}
+                                           placeholder='Numbers only' className={'input_fields'} readOnly>
+                                    </input>
                                 </div>
                                 
                                 <button type='submit' name='calculate' onClick={this.handleTransaction}
