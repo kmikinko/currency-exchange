@@ -1,0 +1,35 @@
+@import "utils/fonts";
+@import "utils/reset";
+@import "utils/variables";
+@import "utils/flex";
+
+@import "components/header";
+@import "components/converter";
+@import "components/transactions";
+
+// fixed classes
+
+html, body {
+  font-size: 16px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+
+// main app view
+
+.main_app {
+  width: 1000px;
+}
+
+main_view{
+    border: 2px solid #00264c;
+}
+
+
+
+
+
+
+
+
+

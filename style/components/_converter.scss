@@ -1,0 +1,38 @@
+//section
+
+.exchange {
+  background-color: #cce5ff;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 20px;
+}
+
+//input fields
+
+.input_fields {
+  margin-bottom: 15px;
+  margin-left: 15px;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10%;
+}
+
+//dropdown box
+
+option {
+  padding: 5px;
+  margin: 10px;
+}
+
+//button
+
+.btn {
+  border-radius: 10%;
+  padding: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: $btnBackground;
+  color: white;
+  margin-top: 20px;
+}
