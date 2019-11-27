@@ -148,7 +148,7 @@ class CurrencyConverter extends Component {
                                         Transaction Name:<span> {this.state.transactionName}</span>
                                         Transaction EUR:<span>{this.state.fromValue}</span>
                                         Transaction PLN: <span>{this.state.toValue}</span>
-                                        <button className={'btn_remove'}>X</button>
+                                        <button className={'btn_remove'}>x</button>
                                     </div>
                                 </li> )}
                             </ul>
