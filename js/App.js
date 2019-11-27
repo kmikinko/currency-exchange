@@ -56,14 +56,17 @@ class CurrencyConverter extends Component {
     handleSubmit = e => {
         e.preventDefault();
     };
+    
+    
     /* adding the list */
     addTransaction = ( transaction ) => {
-        
         let newTransactionList = [ ...this.state.transactionList, transaction ];
         this.setState( {
             transactionList: newTransactionList,
         } );
     }
+    
+    
     handleTransaction = ( e ) => {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
@@ -130,8 +133,11 @@ class CurrencyConverter extends Component {
                     <div className={'container'}>
                         <ul className={'transaction_list'}>
                             <li>THIS IS A TRANSACTION LIST</li>
-                            {this.state.transactionList.map( ( element, index ) => <li key={index}>Transaction Name: {element.transactionName} Transaction
-                                                                                                   PLN: {element.pln} Transaction EUR:{element.eur}</li> )}
+                            {this.state.transactionList.map( ( element, index ) => <li key={index}>
+                                <span> Transaction Name:<span> {this.state.transactionName}</span></span>
+                                <span> Transaction EUR:<span>{this.state.eur}</span></span>
+                                <span> Transaction PLN: <span>{this.state.pln}</span></span>
+                            </li> )}
                         </ul>
                     </div>
                 </section>
@@ -140,8 +146,9 @@ class CurrencyConverter extends Component {
                     <div className={'container '}>
                         <ul className={'transaction_list transactions'} onClick={this.handleChange}>
                             <h3>Total sum of all transactions</h3>
-                            <li>Amount in Euro: <span>{this.state.eur}</span>
-                                Amount in PLN:<span>{this.state.pln}</span>
+                            <li>
+                                <span>Amount in Euro: <span>{this.state.eur}</span> </span>
+                                <span> Amount in PLN:<span>{this.state.pln}</span></span>
                             </li>
                         </ul>
                     </div>
