@@ -13,7 +13,8 @@ class CurrencyConverter extends Component {
         transactionList: [],
         rates: [],
         fromValue: '',
-        toCurrency: ''
+        toCurrency: '',
+        toValue: ''
     }
     
     setToCurrency = ( currency ) => {
@@ -82,8 +83,14 @@ class CurrencyConverter extends Component {
     }
     
     calculateToValue = () => {
-        return this.state.fromValue * this.state.rates[this.state.toCurrency]
-        
+      if (this.state.fromValue ==='' || this.state.toCurrency ==='' || !this.state.rates[this.state.toCurrency]){
+            return 0;
+        }
+       
+       // this.setState({
+       //     change state, assign to the field w liscie
+       // })
+        return this.state.fromValue * this.state.rates[this.state.toCurrency];
     }
     
     render() {
@@ -135,8 +142,8 @@ class CurrencyConverter extends Component {
                             <li>THIS IS A TRANSACTION LIST</li>
                             {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                 <span> Transaction Name:<span> {this.state.transactionName}</span></span>
-                                <span> Transaction EUR:<span>{this.state.eur}</span></span>
-                                <span> Transaction PLN: <span>{this.state.pln}</span></span>
+                                <span> Transaction EUR:<span>{this.state.fromValue}</span></span>
+                                <span> Transaction PLN: <span>{this.state.toValue}</span></span>
                             </li> )}
                         </ul>
                     </div>

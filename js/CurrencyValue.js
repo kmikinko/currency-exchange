@@ -10,13 +10,12 @@ class CurrencyValue extends Component {
             eur: 0,
             pln: 0,
             fromCurrency: '',
-            toValue: '',
             toCurrency: ''
         }
     }
     
     componentDidMount() {
-        this.getCurrencyValue( 'Euro' )
+        this.getCurrencyValue( 'EUR' )
     }
     
     getCurrencyValue = ( currency ) => getCurrencyRates( currency )

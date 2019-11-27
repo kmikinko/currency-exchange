@@ -8,6 +8,10 @@ class CurrencyRates extends Component {
         )
     }
     
+    componentDidMount() {
+        this.props.setToCurrency('PLN')
+    }
+    
     render() {
         const {rates} = this.props;
         
