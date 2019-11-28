@@ -15,7 +15,7 @@
   margin-left: 15px;
   padding: 10px;
   font-size: 20px;
-  border-radius: 10%;
+  border-radius: 25px;
 }
 
 //dropdown box
@@ -28,7 +28,7 @@ option {
 //button
 
 .btn {
-  border-radius: 10%;
+  border-radius: 25px;
   padding: 15px;
   font-size: 25px;
   font-weight: bold;
@@ -46,6 +46,7 @@ select {
   color: $headerText;
   font-weight: bold;
   margin-left: 10px;
+  border-radius: 25px;
 }
 
 //inputs
