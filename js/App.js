@@ -27,6 +27,8 @@ class CurrencyConverter extends Component {
         const name = e.target.name
         this.setState( {
             [name]: e.target.value
+        },()=>{
+            this.calculateToValue();
         } );
     }
     
@@ -67,15 +69,28 @@ class CurrencyConverter extends Component {
         } );
     }
     
+    /* remove list item */
+    
+     removeTransaction = (name) => {
+         const newTransactionList = this.transactionList.filter(item =>{
+            // console.log('click dziala');
+             return item.name != name
+         })
+     }
+    
+     /* sum the transactions */
+    
+    sumOfTransactions = () => {
+    
+    }
     
     handleTransaction = ( e ) => {
         e.preventDefault();
         if ( typeof this.addTransaction === 'function' ) {
-            console.log( this.state.transactionName )
             const obj = {
                 name: this.state.transactionName,
-                euro: this.state.euro,
-                pln: this.state.euro * 4.30
+                toValue: this.state.toValue,
+                fromValue: this.state.fromValue
             }
             this.addTransaction( obj );
         }
@@ -83,14 +98,15 @@ class CurrencyConverter extends Component {
     }
     
     calculateToValue = () => {
+        let toValue =0;
         if ( this.state.fromValue === '' || this.state.toCurrency === '' || !this.state.rates[this.state.toCurrency] ) {
-            return 0;
+            return toValue;
         }
-        
-        // this.setState({
-        //     change state, assign to the field w liscie
-        // })
-        return this.state.fromValue * this.state.rates[this.state.toCurrency];
+        toValue = (this.state.fromValue * this.state.rates[this.state.toCurrency]).toFixed(2);
+        this.setState({
+        toValue // is toValue = toValue
+        });
+        return toValue;
     }
     
     render() {
@@ -124,7 +140,7 @@ class CurrencyConverter extends Component {
                                     
                                     <div>
                                         
-                                        <input type='text' name='toValue' value={this.calculateToValue()}
+                                        <input type='text' name='toValue' value={this.state.toValue}
                                                placeholder='Numbers only' className={'input_fields'} readOnly>
                                         </input>
                                         <CurrencyRates setToCurrency={this.setToCurrency}/>
@@ -145,10 +161,10 @@ class CurrencyConverter extends Component {
                             <ul className={'transaction_list'}>
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                     <div className={'list_element'}>
-                                        Transaction Name:<span> {this.state.transactionName}</span>
-                                        Transaction EUR:<span>{this.state.fromValue}</span>
-                                        Transaction PLN: <span>{this.state.toValue}</span>
-                                        <button className={'btn_remove'}>x</button>
+                                        Transaction Name:<span> {element.name}</span>
+                                        Transaction EUR:<span>{element.fromValue}</span>
+                                        Transaction PLN: <span>{element.toValue}</span>
+                                        {/*<button onClick={this.removeTransaction(this.state.transactionList)} className={'btn_remove'}>x</button>*/}
                                     </div>
                                 </li> )}
                             </ul>
@@ -171,8 +187,10 @@ class CurrencyConverter extends Component {
                     {/*biggest transaction*/}
                     <section className={'main_app'}>
                         <div className={'hover'}>
+                            <h3>The biggest transaction</h3>
+                            <h2>transaction name</h2>
                             <ul className={'transaction_list transactions'}>
-                                <h3>The biggest transaction</h3>
+                                
                                 <li>Amount in Euro: <span>'100'</span>
                                     Amount in PLN:<span>'100'</span>
                                 </li>
