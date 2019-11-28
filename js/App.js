@@ -179,12 +179,13 @@ class CurrencyConverter extends Component {
                                 </div>
                             </form>
                         </div>
+                        <hr></hr>
                     </section>
                     
                     {/* list of all transactions */}
                     <section>
                         <div>
-                            <h3 className={'all_transactions'}>ALL TRANSACTIONS</h3>
+                            <h3 className={'all_transactions'}>TRANSACTION HISTORY</h3>
                             <ul className={'transaction_list'}>
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                     <div className={'list_element'}>
@@ -198,6 +199,7 @@ class CurrencyConverter extends Component {
                                 </li> )}
                             </ul>
                         </div>
+                        <hr></hr>
                     </section>
                     
                     {/*sum of all transactions (section in progress) */}
@@ -205,23 +207,24 @@ class CurrencyConverter extends Component {
                     <section>
                         <div className={'hover'}>
                             <ul className={'transaction_list transactions'} onClick={this.handleChange}>
-                                <h3>Total sum of all transactions</h3>
+                                <h3>TOTAL SUM OF ALL TRANSACTIONS</h3>
                                 <li>
                                     Amount in Euro: <span>{this.state.eur}</span>
                                     Amount in PLN:<span>{this.state.pln}</span>
                                 </li>
                             </ul>
                         </div>
+                        <hr></hr>
                     </section>
                     {/*biggest transaction (section in progress) */}
-                    <section>
+                    <section id={'tran_sum'}>
                         <div className={'hover'}>
-                            <h3>The biggest transaction</h3>
-                            <h2>transaction name</h2>
+                            <h3>HIGHEST TRANSACTION</h3>
+                            {/*<h2>transaction name</h2> */}
                             <ul className={'transaction_list transactions'}>
                                 
-                                <li>Amount in Euro: <span>'100'</span>
-                                    Amount in PLN:<span>'100'</span>
+                                <li>Amount in Euro: <span>0</span>
+                                    Amount in PLN:<span>0</span>
                                 </li>
                             </ul>
                         </div>

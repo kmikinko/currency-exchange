@@ -68,11 +68,15 @@ input {
 
 #input1 {
   margin-right: 210px;
-
+  &:hover {
+    background-color: $inputHover;
+  }
 }
 
 #input2 {
-
+  &:hover {
+    background-color: $inputHover;
+  }
 }
 
 #input3 {

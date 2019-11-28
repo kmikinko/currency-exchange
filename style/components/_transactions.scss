@@ -13,6 +13,10 @@
 h3 {
   font-size: 25px;
   text-align: center;
+  color: $textColor;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  letter-spacing: 2px;
   //background-color: $transactionsBackground;
 }
 
@@ -24,6 +28,9 @@ h2{
 
 li {
   font-size: 20px;
+  color: $textColor;
+  font-weight: bold;
+  letter-spacing: 1.5px;
 }
 
 span {
@@ -31,4 +38,8 @@ span {
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
+}
+
+#tran_sum{
+  margin-bottom: 50px;
 }
