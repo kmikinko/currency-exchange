@@ -5,7 +5,7 @@
 }
 
 .transactions {
-  //background-color: $transactionsBackground;
+
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -15,9 +15,12 @@ h3 {
   text-align: center;
   color: $textColor;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   letter-spacing: 2px;
-  //background-color: $transactionsBackground;
+
+  &:last-of-type{
+    margin-top: 10px;
+  }
 }
 
 h2{
