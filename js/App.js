@@ -188,9 +188,9 @@ class CurrencyConverter extends Component {
                             <ul className={'transaction_list'}>
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                     <div className={'list_element'}>
-                                        Transaction Name:<span> {element.name}</span>
-                                        Transaction {element.fromCurrency}:<span>{element.fromValue}</span>
-                                        Transaction {element.toCurrency}: <span>{element.toValue}</span>
+                                        Transaction:<span> {element.name}</span>
+                                        Amount {element.fromCurrency}:<span>{element.fromValue}</span>
+                                        Amount {element.toCurrency}: <span>{element.toValue}</span>
                                         <button onClick={() => this.removeTransaction( element.name )}
                                                 className={'btn_remove'}>x
                                         </button>
@@ -230,7 +230,6 @@ class CurrencyConverter extends Component {
             </>
         )
     }
-    
 }
 
 

@@ -2,23 +2,34 @@
 // all transactions (list)
 
 .all_transactions{
-  background-color: $transactionsBackground;
+  //background-color: $transactionsBackground;
   padding-top: 20px;
 }
 
 .list_element{
-  background-color: #f3e5dd;
+  background-color: $transactionsList;
   padding-top: 10px;
   padding-bottom: 10px;
+  opacity: 0.9;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1.5px;
 
   &:hover{
-    background-color: $hoverDiv;
+    background-color: $hoverList;
   }
 }
 
+
+li span{
+  margin-right: 45px;
+  font-weight: lighter;
+}
+
+
 .btn_remove {
   width: 35px;
-  background-color: $headerBackground;
+  //background-color: $headerBackground;
   border-radius: 50%;
   color: $transactionsList;
 

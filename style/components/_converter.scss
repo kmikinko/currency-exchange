@@ -1,7 +1,7 @@
 //section
 
 .exchange {
-  background-color: #cce5ff;
+  //background-color:$exchangeBackground;
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -33,13 +33,13 @@ option {
   font-size: 25px;
   font-weight: bold;
   background-color: $btnBackground;
-  color: white;
+  color: $textColor;
   margin-top: 20px;
 }
 
 //dropdown box
 
-select{
+select {
   width: 70px;
   height: 40px;
   padding-left: 10px;
@@ -50,22 +50,31 @@ select{
 
 //inputs
 
-input{
+input {
+  //background-color: $borderColor;
+  //opacity: 0.4;
 
 }
 
-#input1{
-  margin-right: 180px;
+
+#input1 {
+  margin-right: 240px;
 }
 
-#input2{
-
-}
-
-#input3{
+#input2 {
 
 }
 
-#label3{
-  margin-left: 25px;
+#input3 {
+
+}
+
+#label3 {
+  margin-left: 35px;
+}
+
+label{
+  color: $textColor;
+  font-weight: bold;
+  font-size: 30px;
 }
