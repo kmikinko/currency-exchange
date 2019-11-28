@@ -166,7 +166,7 @@ class CurrencyConverter extends Component {
                                     <div>
                                         <label id={'label3'}>To:
                                             <input type='text' name='toValue' value={this.state.toValue}
-                                                   placeholder='Numbers only' className={'input_fields'} id={'input3'}
+                                                   className={'input_fields'} id={'input3'}
                                                    readOnly>
                                             </input>
                                             <CurrencyRates setToCurrency={this.setToCurrency}/>

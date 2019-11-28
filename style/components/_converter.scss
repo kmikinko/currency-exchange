@@ -39,7 +39,7 @@ option {
   border-color: $textColor;
   margin-left: 50px;
 
-  &:hover{
+  &:hover {
     background-color: $btnHover;
   }
 }
@@ -54,6 +54,7 @@ select {
   font-weight: bold;
   margin-left: 10px;
   border-radius: 25px;
+  outline: none;
 }
 
 //inputs
@@ -61,7 +62,7 @@ select {
 input {
   //background-color: $borderColor;
   //opacity: 0.4;
-
+  outline: none;
 }
 
 
@@ -78,7 +79,7 @@ input {
 
 }
 
-#label2{
+#label2 {
   margin-left: 45px;
 }
 
@@ -86,7 +87,7 @@ input {
   margin-left: 80px;
 }
 
-label{
+label {
   color: $textColor;
   font-weight: bold;
   font-size: 30px;
