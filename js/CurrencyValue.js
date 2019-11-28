@@ -21,6 +21,7 @@ class CurrencyValue extends Component {
     getCurrencyValue = ( currency ) => getCurrencyRates( currency )
         .then( response => {
             this.props.setRates(response.rates);
+            this.props.setFromCurrency(currency);
             //console.log(response.rates);
             this.setState( {...this.state, fromCurrency: response.base} );
         } )

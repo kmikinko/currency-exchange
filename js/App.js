@@ -13,6 +13,7 @@ class CurrencyConverter extends Component {
         transactionList: [],
         rates: [],
         fromValue: '',
+        fromCurrency: '',
         toCurrency: '',
         toValue: ''
     }
@@ -46,6 +47,12 @@ class CurrencyConverter extends Component {
         }, () => {
             this.calculateToValue();
         } )
+    }
+    
+    setFromCurrency =(currency)=>{
+        this.setState({
+            fromCurrency: currency
+        })
     }
     
     setEuro = eur => {
@@ -100,7 +107,9 @@ class CurrencyConverter extends Component {
             const obj = {
                 name: this.state.transactionName,
                 toValue: this.state.toValue,
-                fromValue: this.state.fromValue
+                toCurrency: this.state.toCurrency,
+                fromValue: this.state.fromValue,
+                fromCurrency: this.state.fromCurrency
             }
             this.addTransaction( obj );
         }
@@ -144,7 +153,7 @@ class CurrencyConverter extends Component {
                                                    onChange={this.handleChange}
                                                    placeholder='Numbers only' className={'input_fields'}>
                                             </input>
-                                            <CurrencyValue setRates={this.setRates}/>
+                                            <CurrencyValue setFromCurrency = {this.setFromCurrency} setRates={this.setRates}/>
                                         </label>
                                     </div>
                                     
@@ -172,8 +181,8 @@ class CurrencyConverter extends Component {
                                 {this.state.transactionList.map( ( element, index ) => <li key={index}>
                                     <div className={'list_element'}>
                                         Transaction Name:<span> {element.name}</span>
-                                        Transaction EUR:<span>{element.fromValue}</span>
-                                        Transaction PLN: <span>{element.toValue}</span>
+                                        Transaction {element.fromCurrency}:<span>{element.fromValue}</span>
+                                        Transaction {element.toCurrency}: <span>{element.toValue}</span>
                                         <button onClick={() => this.removeTransaction(element.name)}
                                         className={'btn_remove'}>x</button>
                                     </div>
@@ -182,7 +191,7 @@ class CurrencyConverter extends Component {
                         </div>
                     </section>
                     
-                    {/*sum of all transactions*/}
+                    {/*sum of all transactions (section in progress) */}
                     
                     <section className={'main_app'}>
                         <div className={'hover'}>
@@ -195,7 +204,7 @@ class CurrencyConverter extends Component {
                             </ul>
                         </div>
                     </section>
-                    {/*biggest transaction*/}
+                    {/*biggest transaction (section in progress) */}
                     <section className={'main_app'}>
                         <div className={'hover'}>
                             <h3>The biggest transaction</h3>
