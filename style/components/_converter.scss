@@ -6,6 +6,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
   font-size: 20px;
+  letter-spacing: 2px;
 }
 
 //input fields
@@ -35,6 +36,11 @@ option {
   background-color: $btnBackground;
   color: $textColor;
   margin-top: 20px;
+  border-color: $textColor;
+
+  &:hover{
+    background-color: $btnHover;
+  }
 }
 
 //dropdown box
