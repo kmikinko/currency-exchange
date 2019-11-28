@@ -20,7 +20,9 @@ class CurrencyConverter extends Component {
     setToCurrency = ( currency ) => {
         this.setState( {
             toCurrency: currency
-        } )
+        }, () => {
+            this.calculateToValue();
+        }  )
     }
     
     handleChange = ( e ) => {
@@ -41,6 +43,8 @@ class CurrencyConverter extends Component {
     setRates = rates => {
         this.setState( {
             rates: rates
+        }, () => {
+            this.calculateToValue();
         } )
     }
     
@@ -72,17 +76,23 @@ class CurrencyConverter extends Component {
     /* remove list item */
     
      removeTransaction = (name) => {
-         const newTransactionList = this.transactionList.filter(item =>{
+         const newTransactionList = this.state.transactionList.filter(item =>{
             // console.log('click dziala');
              return item.name != name
+         });
+         
+         this.setState({
+             transactionList: newTransactionList
          })
      }
     
      /* sum the transactions */
     
-    sumOfTransactions = () => {
+    // sumOfTransactions = () => {
+    //
+    // }
     
-    }
+    
     
     handleTransaction = ( e ) => {
         e.preventDefault();
@@ -164,7 +174,8 @@ class CurrencyConverter extends Component {
                                         Transaction Name:<span> {element.name}</span>
                                         Transaction EUR:<span>{element.fromValue}</span>
                                         Transaction PLN: <span>{element.toValue}</span>
-                                        {/*<button onClick={this.removeTransaction(this.state.transactionList)} className={'btn_remove'}>x</button>*/}
+                                        <button onClick={() => this.removeTransaction(element.name)}
+                                        className={'btn_remove'}>x</button>
                                     </div>
                                 </li> )}
                             </ul>
