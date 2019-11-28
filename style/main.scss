@@ -18,9 +18,11 @@ html, body {
 
 // main app view
 
-.main_app {
+#main{
+  border: 2px black solid;
   width: 1000px;
 }
+
 
 main_view{
     border: 2px solid #00264c;

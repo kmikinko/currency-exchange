@@ -23,14 +23,14 @@ class CurrencyConverter extends Component {
             toCurrency: currency
         }, () => {
             this.calculateToValue();
-        }  )
+        } )
     }
     
     handleChange = ( e ) => {
         const name = e.target.name
         this.setState( {
             [name]: e.target.value
-        },()=>{
+        }, () => {
             this.calculateToValue();
         } );
     }
@@ -49,10 +49,10 @@ class CurrencyConverter extends Component {
         } )
     }
     
-    setFromCurrency =(currency)=>{
-        this.setState({
+    setFromCurrency = ( currency ) => {
+        this.setState( {
             fromCurrency: currency
-        })
+        } )
     }
     
     setEuro = eur => {
@@ -82,30 +82,28 @@ class CurrencyConverter extends Component {
     
     /* remove list item */
     
-     removeTransaction = (name) => {
-         const newTransactionList = this.state.transactionList.filter(item =>{
+    removeTransaction = ( name ) => {
+        const newTransactionList = this.state.transactionList.filter( item => {
             // console.log('click dziala');
-             return item.name != name
-         });
-         
-         this.setState({
-             transactionList: newTransactionList
-         })
-     }
+            return item.name != name
+        } );
+        
+        this.setState( {
+            transactionList: newTransactionList
+        } )
+    }
     
-     /* sum the transactions */
+    /* sum the transactions */
     
     sumOfTransactions = () => {
-
+    
     }
     
     /* biggest transaction */
     
-    maxTransaction = (transaction) =>{
+    maxTransaction = ( transaction ) => {
     
     }
-    
-    
     
     
     handleTransaction = ( e ) => {
@@ -124,32 +122,32 @@ class CurrencyConverter extends Component {
     }
     
     calculateToValue = () => {
-        let toValue =0;
+        let toValue = 0;
         if ( this.state.fromValue === '' || this.state.toCurrency === '' || !this.state.rates[this.state.toCurrency] ) {
             return toValue;
         }
-        toValue = (this.state.fromValue * this.state.rates[this.state.toCurrency]).toFixed(2);
-        this.setState({
-        toValue // is toValue = toValue
-        });
+        toValue = (this.state.fromValue * this.state.rates[this.state.toCurrency]).toFixed( 2 );
+        this.setState( {
+            toValue // is toValue = toValue
+        } );
         return toValue;
     }
     
     render() {
         return (
             <>
-                <div className={'mainView'}>
+                <div id={'main'}>
                     {/*currency form */}
-                    <section className={'main_app'}>
+                    <section >
                         <div>
                             <h1>CURRENCY CONVERTER</h1>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={'exchange'}>
                                     <div>
-                                        <label>Transaction name
+                                        <label>Transaction name:
                                             <input type='text' name='transactionName' value={this.state.transactionName}
                                                    onChange={this.handleChange} placeholder='Transaction name'
-                                                   className={'input_fields'}>
+                                                   className={'input_fields'} id={'input1'}>
                                             </input>
                                         </label>
                                     </div>
@@ -158,18 +156,21 @@ class CurrencyConverter extends Component {
                                         <label>From:
                                             <input type='text' name='fromValue' value={this.state.fromValue}
                                                    onChange={this.handleChange}
-                                                   placeholder='Numbers only' className={'input_fields'}>
+                                                   placeholder='Numbers only' className={'input_fields'} id={'input2'}>
                                             </input>
-                                            <CurrencyValue setFromCurrency = {this.setFromCurrency} setRates={this.setRates}/>
+                                            <CurrencyValue setFromCurrency={this.setFromCurrency}
+                                                           setRates={this.setRates}/>
                                         </label>
                                     </div>
                                     
                                     <div>
-                                        
-                                        <input type='text' name='toValue' value={this.state.toValue}
-                                               placeholder='Numbers only' className={'input_fields'} readOnly>
-                                        </input>
-                                        <CurrencyRates setToCurrency={this.setToCurrency}/>
+                                        <label id={'label3'}>To:
+                                            <input type='text' name='toValue' value={this.state.toValue}
+                                                   placeholder='Numbers only' className={'input_fields'} id={'input3'}
+                                                   readOnly>
+                                            </input>
+                                            <CurrencyRates setToCurrency={this.setToCurrency}/>
+                                        </label>
                                     </div>
                                     
                                     <button type='submit' name='calculate' onClick={this.handleTransaction}
@@ -181,7 +182,7 @@ class CurrencyConverter extends Component {
                     </section>
                     
                     {/* list of all transactions */}
-                    <section className={'main_app'}>
+                    <section>
                         <div>
                             <h3 className={'all_transactions'}>ALL TRANSACTIONS</h3>
                             <ul className={'transaction_list'}>
@@ -190,8 +191,9 @@ class CurrencyConverter extends Component {
                                         Transaction Name:<span> {element.name}</span>
                                         Transaction {element.fromCurrency}:<span>{element.fromValue}</span>
                                         Transaction {element.toCurrency}: <span>{element.toValue}</span>
-                                        <button onClick={() => this.removeTransaction(element.name)}
-                                        className={'btn_remove'}>x</button>
+                                        <button onClick={() => this.removeTransaction( element.name )}
+                                                className={'btn_remove'}>x
+                                        </button>
                                     </div>
                                 </li> )}
                             </ul>
@@ -200,7 +202,7 @@ class CurrencyConverter extends Component {
                     
                     {/*sum of all transactions (section in progress) */}
                     
-                    <section className={'main_app'}>
+                    <section>
                         <div className={'hover'}>
                             <ul className={'transaction_list transactions'} onClick={this.handleChange}>
                                 <h3>Total sum of all transactions</h3>
@@ -212,7 +214,7 @@ class CurrencyConverter extends Component {
                         </div>
                     </section>
                     {/*biggest transaction (section in progress) */}
-                    <section className={'main_app'}>
+                    <section>
                         <div className={'hover'}>
                             <h3>The biggest transaction</h3>
                             <h2>transaction name</h2>

@@ -16,7 +16,7 @@ class CurrencyRates extends Component {
         const {rates} = this.props;
         
         return <>
-            <label>To:
+            <label>
                 <select onChange={this.handleChange}>
                     <option>PLN
                     </option>
