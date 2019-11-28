@@ -95,9 +95,16 @@ class CurrencyConverter extends Component {
     
      /* sum the transactions */
     
-    // sumOfTransactions = () => {
-    //
-    // }
+    sumOfTransactions = () => {
+
+    }
+    
+    /* biggest transaction */
+    
+    maxTransaction = (transaction) =>{
+    
+    }
+    
     
     
     
