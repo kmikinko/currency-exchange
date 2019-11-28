@@ -153,7 +153,7 @@ class CurrencyConverter extends Component {
                                     </div>
                                     
                                     <div>
-                                        <label>From:
+                                        <label id={'label2'}>From:
                                             <input type='text' name='fromValue' value={this.state.fromValue}
                                                    onChange={this.handleChange}
                                                    placeholder='Numbers only' className={'input_fields'} id={'input2'}>

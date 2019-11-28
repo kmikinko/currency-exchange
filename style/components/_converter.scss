@@ -35,8 +35,9 @@ option {
   font-weight: bold;
   background-color: $btnBackground;
   color: $textColor;
-  margin-top: 20px;
+  margin-top: 25px;
   border-color: $textColor;
+  margin-left: 50px;
 
   &:hover{
     background-color: $btnHover;
@@ -65,7 +66,8 @@ input {
 
 
 #input1 {
-  margin-right: 240px;
+  margin-right: 210px;
+
 }
 
 #input2 {
@@ -76,8 +78,12 @@ input {
 
 }
 
+#label2{
+  margin-left: 45px;
+}
+
 #label3 {
-  margin-left: 35px;
+  margin-left: 80px;
 }
 
 label{
