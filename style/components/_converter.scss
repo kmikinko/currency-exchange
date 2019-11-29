@@ -1,7 +1,6 @@
 //section
 
 .exchange {
-  //background-color:$exchangeBackground;
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -38,6 +37,7 @@ option {
   margin-top: 25px;
   border-color: $textColor;
   margin-left: 50px;
+  outline: none;
 
   &:hover {
     background-color: $btnHover;
