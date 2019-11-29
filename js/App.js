@@ -140,7 +140,7 @@ class CurrencyConverter extends Component {
                     {/*currency form */}
                     <section >
                         <div>
-                            <h1>CURRENCY CONVERTER</h1>
+                            <h1>CURR€NCY CONVER₮ER</h1>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={'exchange'}>
                                     <div>
