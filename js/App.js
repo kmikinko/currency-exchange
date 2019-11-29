@@ -17,7 +17,8 @@ class CurrencyConverter extends Component {
         toCurrency: '',
         toValue: '',
         maxEuro: 0,
-        maxPln: 0
+        maxPln: 0,
+        sumEuro: 0
     }
     
     setToCurrency = ( currency ) => {
@@ -84,6 +85,7 @@ class CurrencyConverter extends Component {
             toValue:''
         }, () => {
             this.maxTransaction();
+            // this.sumOfTransactions();
         } );
     }
     
@@ -101,10 +103,21 @@ class CurrencyConverter extends Component {
     }
     
     /* sum the transactions */
-    
-    sumOfTransactions = () => {
-    
-    }
+    //
+    // sumOfTransactions = () => {
+    // let newEuroSumList = this.state.transactionList(transaction =>{
+    //     if(transaction.toCurrency==='EUR'){
+    //         return parseFloat(transaction.toValue);
+    //     } else if (transaction.fromCurrency ==='EUR'){
+    //         return parseFloat(transaction.fromValue);
+    //     }
+    // });
+    // const newSumEuro = newEuroSumList.reduce((a,b)=>a+b, 0);
+    // this.setState({
+    //     sumEuro: newSumEuro
+    // })
+    // return newSumEuro;
+    // }
     
     /* biggest transaction */
     
