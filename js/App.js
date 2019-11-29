@@ -15,7 +15,9 @@ class CurrencyConverter extends Component {
         fromValue: '',
         fromCurrency: '',
         toCurrency: '',
-        toValue: ''
+        toValue: '',
+        maxEuro: 0,
+        maxPln: 0
     }
     
     setToCurrency = ( currency ) => {
@@ -77,6 +79,11 @@ class CurrencyConverter extends Component {
         let newTransactionList = [ ...this.state.transactionList, transaction ];
         this.setState( {
             transactionList: newTransactionList,
+            transactionName: '',
+            fromValue: '',
+            toValue:''
+        }, () => {
+            this.maxTransaction();
         } );
     }
     
@@ -101,8 +108,29 @@ class CurrencyConverter extends Component {
     
     /* biggest transaction */
     
-    maxTransaction = ( transaction ) => {
-    
+    maxTransaction = () => {
+    let newMaxEuroList = this.state.transactionList.map(transaction =>{
+        if(transaction.toCurrency==='EUR'){
+            return parseFloat(transaction.toValue);
+        } else if (transaction.fromCurrency ==='EUR'){
+            return parseFloat(transaction.fromValue);
+        }
+        
+    });
+        let newMaxPlnList = this.state.transactionList.map(transaction =>{
+            if(transaction.toCurrency==='PLN'){
+                return parseFloat(transaction.toValue);
+            } else if (transaction.fromCurrency ==='PLN'){
+                return parseFloat(transaction.fromValue);
+            }
+        
+        });
+    const newMaxEuro = Math.max(...newMaxEuroList);
+    const newMaxPln = Math.max(...newMaxPlnList);
+    this.setState({
+        maxEuro: newMaxEuro,
+        maxPln: newMaxPln
+    })
     }
     
     
@@ -117,6 +145,7 @@ class CurrencyConverter extends Component {
                 fromCurrency: this.state.fromCurrency
             }
             this.addTransaction( obj );
+            
         }
         
     }
@@ -209,7 +238,7 @@ class CurrencyConverter extends Component {
                             <ul className={'transaction_list transactions'} onClick={this.handleChange}>
                                 <h3>TOTAL SUM OF ALL TRANSACTIONS</h3>
                                 <li>
-                                    Amount in Euro: <span>{this.state.eur}</span>
+                                    Amount in Euro: <span>0</span>
                                     Amount in PLN:<span>{this.state.pln}</span>
                                 </li>
                             </ul>
@@ -223,8 +252,8 @@ class CurrencyConverter extends Component {
                             {/*<h2>transaction name</h2> */}
                             <ul className={'transaction_list transactions'}>
                                 
-                                <li>Amount in Euro: <span>0</span>
-                                    Amount in PLN:<span>0</span>
+                                <li>Amount in Euro: <span>{this.state.maxEuro}</span>
+                                    Amount in PLN:<span>{this.state.maxPln}</span>
                                 </li>
                             </ul>
                         </div>
