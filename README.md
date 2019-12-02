@@ -3,6 +3,8 @@
 
 https://reczkowska.github.io/currency-exchange/build/
 
+React + Sass
+
 Functionalities:
 
 Convert EUR to PLN and PLN to EUR (API) 
