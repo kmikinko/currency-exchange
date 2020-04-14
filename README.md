@@ -1,7 +1,7 @@
 # currency-exchange
 
 
-https://reczkowska.github.io/currency-exchange/build/
+https://kmikinko.github.io/currency-exchange/build/
 
 React + Sass
 
